@@ -1,0 +1,6 @@
+#mainTitleBar {
+    display: absolute;
+    height: 30%;
+    width: auto;
+    background-color: lime;
+}
