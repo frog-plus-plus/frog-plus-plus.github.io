@@ -1,0 +1,71 @@
+:root {
+    --bg-colour: #101010;
+    --list-bg-colour: #252525;
+    --fg-colour: #ddd;
+    --pc-item-height: 40px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--bg-colour);
+    color: var(--fg-colour);
+    font-family: Roboto, Arial;
+}
+
+#title {
+    text-align: center;
+    padding: 30px;
+}
+
+#itemList {
+    background-color: var(--list-bg-colour);
+    width: 48%;
+    margin-left: 1%;
+    float: left;
+    height: 500px;
+    border-radius: 5px;
+}
+
+.pcItem {
+    width: 98%;
+    height: var(--pc-item-height);
+    margin-left: 1%;
+    margin-top: 5px;
+    background-color: var(--bg-colour);
+    border-radius: 5px;
+}
+
+.pcItemNameDiv {
+    float: left;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+}
+
+.pcItemName {
+    font-size: calc(var(--pc-item-height) / 2);
+}
+
+.pcItemRightData {
+    float: right;
+    height: 100%;
+    width: 25%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#controller {
+    background-color: var(--list-bg-colour);
+    width: 48%;
+    margin-right: 1%;
+    float: right;
+    border-radius: 5px;
+}

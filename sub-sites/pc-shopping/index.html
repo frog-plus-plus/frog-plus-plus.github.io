@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/manager.js" defer></script>
+    <title>PC Shopping Manager</title>
 </head>
+
 <body>
-    Hello
+    <div id="titleArea">
+        <h1 id="title">PC SHOPPING MANAGER</h1>
+    </div>
+
+    <div id="managerArea">
+        <div id="itemList">
+            <div class="pcItem">
+                <div class="pcItemNameDiv"><h4 class="pcItemName">Name of Item</h4></div>
+                <div class="pcItemRightData">
+                    <h4 class="pcItemPrice">£34</h4>
+                    <button class="pcItemShowDescription">?</button>
+                </div>
+            </div>
+        </div>
+        <div id="controller">
+            <div id="addRemoveItem">
+                <button id="addItem"> + </button>
+                <button id="removeItem"> - </button>
+            </div>
+            <textarea id="nameField" placeholder="Name of Item"></textarea>
+            <textarea id="descriptionField" placeholder="Item Description"></textarea>
+            <textarea id="priceField" placeholder="Price of Item"></textarea>
+        </div>
+    </div>
 </body>
+
 </html>
