@@ -74,3 +74,23 @@ body {
     margin-left: 1em;
     margin-right: 1em;
 }
+
+#headerTitle {
+    font-size: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#wrapper {
+    margin: auto;
+    margin-top: 1vh;
+    width: 70vw;
+    background-color: var(--secondaryBackgroundColour);
+    color: var(--backgroundColourLight);
+}
+
+#insideWrapper {
+    height: calc(100% - 30px);
+    width: calc(100% - 30px);
+    margin: auto;
+}
