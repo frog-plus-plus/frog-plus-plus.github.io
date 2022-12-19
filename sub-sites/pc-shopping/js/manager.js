@@ -16,21 +16,28 @@ function createPCItemElement(listIndex) {
 
     // Create Elements
     // ---------------
+
+    // Main Item
     const newPCItem = document.createElement('div');
     newPCItem.className = 'pcItem';
 
+    // Div containing the name
     const itemNameDiv = document.createElement('div');
-    const itemRightDataDiv = document.createElement('div');
     itemNameDiv.className = 'pcItemNameDiv';
-    itemRightDataDiv.className = 'pcItemRightData';
     newPCItem.appendChild(itemNameDiv);
-    newPCItem.appendChild(itemRightDataDiv);
 
+    // Text showing the name
     const itemNameText = document.createElement('h4');
     itemNameText.className = 'pcItemName';
     itemNameText.textContent = itemListArray[listIndex]['name'];
     itemNameDiv.appendChild(itemNameText);
+    
+    // Div containing the price and button to show the description
+    const itemRightDataDiv = document.createElement('div');
+    itemRightDataDiv.className = 'pcItemRightData';
+    newPCItem.appendChild(itemRightDataDiv);
 
+    // Text showing the price
     const itemPriceText = document.createElement('h4');
     itemPriceText.className = 'pcItemPrice';
     // The pound (£) sign has a strange character beside it for some reason if I don't put the unicode
@@ -38,16 +45,19 @@ function createPCItemElement(listIndex) {
     console.log("Item Price Text: " + itemPriceText.textContent);
     itemRightDataDiv.appendChild(itemPriceText);
 
+    // Button to show the description
     const itemDescriptionButton = document.createElement('button');
     itemDescriptionButton.className = 'pcItemShowDescription';
     itemDescriptionButton.textContent = '?';
     itemRightDataDiv.appendChild(itemDescriptionButton);
+    
     // Callback for when the SHOW DESCRIPTION button is clicked
     itemDescriptionButton.onclick = () => {
         const descriptionText = document.querySelector('#descriptionText');
         descriptionText.textContent = itemListArray[listIndex]['description'];
         descriptionBox.style.display = 'block';
     };
+
     return newPCItem;
 }
 
