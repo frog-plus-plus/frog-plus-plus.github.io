@@ -1,38 +1,78 @@
-const itemList = document.getElementById("itemList");
+// Get the HTML div containing the list of items
+const itemList = document.querySelector('#itemList')
 
+// Create the behind-the-scenes array containing the list of items
 let itemListArray = [];
 
+// Code to close the description menu
+const descriptionBox = document.querySelector('#descriptionBox');
+const closeDescriptionBox = document.querySelector('#closeDescriptionBox');
+closeDescriptionBox.onclick = () => {
+    descriptionBox.style.display = 'none';
+};
+
+// Create the HTML elements for each PC item
 function createPCItemElement(listIndex) {
-    let newPCItem = document.createElement('div');
+
+    // Create Elements
+    // ---------------
+    const newPCItem = document.createElement('div');
     newPCItem.className = 'pcItem';
 
-    let itemNameDiv = document.createElement('div');
-    let itemRightDataDiv = document.createElement('div');
+    const itemNameDiv = document.createElement('div');
+    const itemRightDataDiv = document.createElement('div');
     itemNameDiv.className = 'pcItemNameDiv';
     itemRightDataDiv.className = 'pcItemRightData';
-    itemNameDiv.parentElement = newPCItem;
-    itemRightDataDiv.parentElement = newPCItem;
+    newPCItem.appendChild(itemNameDiv);
+    newPCItem.appendChild(itemRightDataDiv);
 
-    let itemNameText = document.createElement('h4');
+    const itemNameText = document.createElement('h4');
     itemNameText.className = 'pcItemName';
     itemNameText.textContent = itemListArray[listIndex]['name'];
-    itemNameText.parentElement = itemNameDiv;
+    itemNameDiv.appendChild(itemNameText);
 
-    let itemPriceText = document.createElement('h4');
+    const itemPriceText = document.createElement('h4');
     itemPriceText.className = 'pcItemPrice';
-    itemPriceText.textContent = '£' + itemListArray[listIndex]['price'];
-    itemPriceText.parentElement = itemRightDataDiv;
+    // The pound (£) sign has a strange character beside it for some reason if I don't put the unicode
+    itemPriceText.textContent = '\u00A3' + itemListArray[listIndex]['price'];
+    console.log("Item Price Text: " + itemPriceText.textContent);
+    itemRightDataDiv.appendChild(itemPriceText);
+
+    const itemDescriptionButton = document.createElement('button');
+    itemDescriptionButton.className = 'pcItemShowDescription';
+    itemDescriptionButton.textContent = '?';
+    itemRightDataDiv.appendChild(itemDescriptionButton);
+    // Callback for when the SHOW DESCRIPTION button is clicked
+    itemDescriptionButton.onclick = () => {
+        const descriptionText = document.querySelector('#descriptionText');
+        descriptionText.textContent = itemListArray[listIndex]['description'];
+        descriptionBox.style.display = 'block';
+    };
     return newPCItem;
 }
 
+// Function to call when adding a PC item
 function addPCItem(name, description, price) {
-    let itemAmount = itemListArray.push([{
+    let itemAmount = itemListArray.push({
         'name': name,
         'description': description,
-        'price' : price
-    }]);
-    let pcItemElement = createPCItemElement(itemAmount - 1);
-    pcItemElement.parentElement = itemList;
-    console.log(pcItemElement.parentElement);
+        'price': price
+    });
+    const pcItemElement = createPCItemElement(itemAmount - 1);
+    itemList.appendChild(pcItemElement);
 }
 
+// Callbacks for when the ADD button is pressed
+// --------------------------------------------
+const addItemButton = document.querySelector('#addItem');
+const removeItemButton = document.querySelector('#removeItem');
+const nameField = document.querySelector('#nameField');
+const descriptionField = document.querySelector('#descriptionField');
+const priceField = document.querySelector('#priceField');
+
+addItemButton.onclick = () => {
+    if (nameField.value != '' && descriptionField.value != '' && priceField.value != '') 
+    {
+        addPCItem(nameField.value, descriptionField.value, priceField.value);
+    }
+};

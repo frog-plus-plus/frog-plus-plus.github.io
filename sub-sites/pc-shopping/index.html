@@ -7,21 +7,18 @@
     <title>PC Shopping Manager</title>
 </head>
 
-<body>
+<body id="body">
+    <div id="descriptionBox">
+        <div id="closeDescriptionBoxDiv"><button id="closeDescriptionBox"> X </button></div>
+        <h3 id="descriptionBoxTitle">Item Description</h3>
+        <p id="descriptionText"></p>
+    </div>
     <div id="titleArea">
         <h1 id="title">PC SHOPPING MANAGER</h1>
     </div>
 
     <div id="managerArea">
-        <div id="itemList">
-            <div class="pcItem">
-                <div class="pcItemNameDiv"><h4 class="pcItemName">Name of Item</h4></div>
-                <div class="pcItemRightData">
-                    <h4 class="pcItemPrice">£34</h4>
-                    <button class="pcItemShowDescription">?</button>
-                </div>
-            </div>
-        </div>
+        <div id="itemList"></div>
         <div id="controller">
             <div id="addRemoveItem">
                 <button id="addItem"> + </button>
